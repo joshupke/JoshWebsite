@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Proto Luma Troubleshooting FAQ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --bg: #f4f5f7; --surface: #ffffff; --border: #e2e4e8;
+    --text-primary: #17181c; --text-secondary: #5b5e68; --text-muted: #8b8e98;
+    --accent: #d9341e; --accent-bg: #fbe9e4; --accent-text: #a3230f; --radius: 12px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text-primary); padding: 0 0 4rem; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 1.25rem; }
+  .brandbar { background: var(--accent); padding: 14px 1.25rem; margin-bottom: 2.5rem; }
+  .brandbar-inner { max-width: 760px; margin: 0 auto; }
+  .brandbar span { color: #fff; font-size: 15px; font-weight: 600; letter-spacing: 0.04em; }
+  header { text-align: center; margin-bottom: 2rem; padding-top: 0.5rem; }
+  h1 { font-size: 26px; font-weight: 600; margin: 0 0 0.5rem; }
+  .subtitle { font-size: 15px; color: var(--text-secondary); max-width: 480px; margin: 0 auto; line-height: 1.5; }
+  .toolbar { display: flex; justify-content: center; gap: 8px; margin: 1.5rem 0 2rem; }
+  .toolbar button { font: inherit; font-size: 13px; padding: 7px 14px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); color: var(--text-secondary); cursor: pointer; }
+  .cards { display: flex; flex-direction: column; gap: 10px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .card summary { list-style: none; cursor: pointer; padding: 16px 18px; display: flex; align-items: center; gap: 12px; }
+  .card summary::-webkit-details-marker { display: none; }
+  .card .num { font-size: 12px; font-weight: 600; color: var(--accent-text); background: var(--accent-bg); border-radius: 6px; padding: 3px 7px; flex-shrink: 0; }
+  .card .q { flex: 1; font-size: 15px; font-weight: 500; }
+  .card .chev { font-size: 18px; color: var(--text-muted); width: 20px; text-align: center; flex-shrink: 0; }
+  .card[open] .chev { transform: rotate(45deg); }
+  .card[open] summary { border-bottom: 1px solid var(--border); }
+  .content { padding: 4px 18px 18px 50px; }
+  .label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); margin: 14px 0 8px; }
+  .label-escalate { color: var(--accent-text); }
+  ol, ul { margin: 0; padding-left: 20px; }
+  li { font-size: 14px; line-height: 1.6; color: var(--text-primary); margin-bottom: 6px; }
+  ul li { color: var(--text-secondary); }
+  footer { text-align: center; margin-top: 2.5rem; font-size: 12px; color: var(--text-muted); }
+  .note { text-align: center; font-size: 12px; color: var(--text-muted); margin-bottom: 1.5rem; }
+</style>
+</head>
+<body>
+<div class="brandbar"><div class="brandbar-inner"><span>PROTO</span></div></div>
+<div class="wrap">
+  <header>
+    <h1>Proto Luma Troubleshooting FAQ</h1>
+    <p class="subtitle">Click a topic below for step-by-step fixes before contacting Proto Support.</p>
+  </header>
+  <p class="note">Rough draft &mdash; photos are being added to the full version.</p>
+  <div class="toolbar">
+    <button onclick="document.querySelectorAll('.card').forEach(d=>d.open=true)">Expand all</button>
+    <button onclick="document.querySelectorAll('.card').forEach(d=>d.open=false)">Collapse all</button>
+  </div>
+  <div class="cards">
+
+  <details class="card"><summary><span class="num">01</span><span class="q">My display is black or showing no image</span><span class="chev">+</span></summary>
+  <div class="content">
+    <p class="label">Try these steps in order</p>
+    <ol>
+      <li>Confirm the Luma is plugged into a known-working power outlet and the circuit is active. Restart and test.</li>
+      <li>Check for any signs of power (fans, LEDs, soundbar, NUC indicator light). If there are none, see "Won't power on."</li>
+      <li>Power-cycle the Luma: unplug it, wait at least 30 seconds, plug it back in, and restart.</li>
+      <li>Check the externally accessible power-switch fuse. If it looks damaged or blown, replace it with an approved fuse, then restart and test.</li>
+      <li>Power off, disconnect AC, and check that the NUC video connection, display ribbon cable, AD board connection, and display power connection are all seated. Reseat any loose connections and retest.</li>
+      <li>If available, test the NUC with an approved external monitor to isolate the display assembly from the NUC/boot path.</li>
+    </ol>
+    <p class="label label-escalate">Contact Proto Support if</p>
+    <ul>
+      <li>A replacement fuse fails again immediately</li>
+      <li>The unit looks operational remotely but the display stays black</li>
+      <li>The ribbon cable, AD board, or a circuit-board connection looks damaged</li>
+      <li>The external-monitor test also shows nothing</li>
+    </ul>
+  </div></details>
+
+  <details class="card"><summary><span class="num">02</span><span class="q">I have no audio (speakers and/or microphone)</span><span class="chev">+</span></summary>
+  <div class="content">
+    <p class="label">Try these steps in order</p>
+    <ol>
+      <li>Confirm the Luma and the active app aren't muted, and turn volume up to a safe test level.</li>
+      <li>Confirm the integrated soundbar is selected as the audio input/output device.</li>
+      <li>Restart the current app or session and test again.</li>
+      <li>Restart the Luma entirely and test again.</li>
+      <li>Check whether the soundbar is detected by the system &mdash; test speakers and microphone separately if it is; inspect connections if it isn't.</li>
+      <li>As a temporary fix, connect an approved USB webcam, USB speaker, or conference device.</li>
+    </ol>
+    <p class="label label-escalate">Contact Proto Support if</p>
+    <ul>
+      <li>The soundbar isn't detected after a restart</li>
+      <li>Connections look damaged</li>
+      <li>Audio is distorted, intermittent, or noisy</li>
+      <li>Camera and audio are both out</li>
+    </ul>
+  </div></details>
+
+  <details class="card"><summary><span class="num">03</span><span class="q">My camera isn't working</span><span class="chev">+</span></summary>
+  <div class="content">
+    <p class="label">Try these steps in order</p>
+    <ol>
+      <li>Update the soundbar to the latest available firmware/software.</li>
+      <li>Confirm the Luma is powered on and otherwise working normally.</li>
+      <li>Check whether the camera is physically obstructed or covered &mdash; remove any obstruction, open the shutter, or clean the lens, then test.</li>
+      <li>Restart the app or session and test again.</li>
+      <li>Restart the Luma and check if the camera is now detected.</li>
+      <li>Inspect accessible camera and soundbar connections for anything loose. Reseat, restart, and test.</li>
+      <li>Connect a supported USB webcam as a temporary workaround while service is scheduled.</li>
+    </ol>
+    <p class="label label-escalate">Contact Proto Support if</p>
+    <ul>
+      <li>The integrated camera stays unavailable after a restart</li>
+      <li>Internal connections look damaged</li>
+      <li>The replacement webcam also isn't detected</li>
+      <li>The issue keeps coming back after a temporary fix</li>
+    </ul>
+  </div></details>
+
+  <details class="card"><summary><span class="num">04</span><span class="q">My Luma won't connect / is offline</span><span class="chev">+</span></summary>
+  <div class="content">
+    <p class="label">Try these steps in order</p>
+    <ol>
+      <li>Confirm the site has an active internet connection. If not, contact your site IT or internet provider.</li>
+      <li>Check that the Ethernet cable is securely connected at both ends.</li>
+      <li>Check for network link/activity lights, and confirm the Luma is receiving an IP address.</li>
+      <li>Try a different Ethernet cable and a known-working network port.</li>
+      <li>Inspect the rear Ethernet port and internal connection for damage or looseness.</li>
+      <li>If supported, test a temporary Wi-Fi or alternate connection.</li>
+    </ol>
+    <p class="label label-escalate">Contact Proto Support if</p>
+    <ul>
+      <li>The rear Ethernet port is physically damaged</li>
+      <li>The unit gets an IP address but still can't reach Proto services</li>
+      <li>The issue persists on a known-good cable and port</li>
+      <li>Site firewall/security rules may be blocking service</li>
+    </ul>
+  </div></details>
+
+  <details class="card"><summary><span class="num">05</span><span class="q">My Luma won't power on</span><span class="chev">+</span></summary>
+  <div class="content">
+    <p class="label">Try these steps in order</p>
+    <ol>
+      <li>Confirm the power cord is securely connected at both the unit and the wall outlet.</li>
+      <li>Confirm the wall outlet works, and that any power strip, UPS, breaker, or disconnect is switched on.</li>
+      <li>Try the spare approved power cord.</li>
+      <li>Inspect the power-switch fuse under the exterior access door. If it's blown, replace it once with the exact approved type and rating.</li>
+      <li>Attempt startup and look for any signs of power (LEDs, fans, soundbar, NUC indicator).</li>
+      <li>Power off, disconnect AC, and inspect the external power switch and power-supply connections for damage.</li>
+    </ol>
+    <p class="label label-escalate">Contact Proto Support if</p>
+    <ul>
+      <li>Smoke, odor, arcing, sparking, unusual heat, or discoloration &mdash; stop immediately</li>
+      <li>A replacement fuse blows again</li>
+      <li>Wiring insulation is damaged or liquid intrusion is suspected</li>
+      <li>The unit starts then shuts down repeatedly</li>
+    </ul>
+  </div></details>
+
+  <details class="card"><summary><span class="num">06</span><span class="q">My video quality is poor</span><span class="chev">+</span></summary>
+  <div class="content">
+    <p class="label">Try these steps in order</p>
+    <ol>
+      <li>If blurry before a session starts, check camera focus, position, and app settings.</li>
+      <li>If quality only drops during a live session, check network bandwidth, latency, and packet loss.</li>
+      <li>Restart the Luma and test again.</li>
+      <li>Try a supported USB webcam as a comparison.</li>
+      <li>Clean the camera lens with an approved cloth if it's dirty or obstructed.</li>
+    </ol>
+    <p class="label label-escalate">Contact Proto Support if</p>
+    <ul>
+      <li>The integrated camera stays blurry or distorted after cleaning and restarting</li>
+      <li>Persistent lines, flicker, color distortion, or artifacts</li>
+      <li>Quality is poor on both the integrated and a temporary camera</li>
+      <li>Quality keeps degrading despite a stable network</li>
+    </ul>
+  </div></details>
+
+  <details class="card"><summary><span class="num">07</span><span class="q">My remote control isn't working</span><span class="chev">+</span></summary>
+  <div class="content">
+    <p class="label">Try these steps in order</p>
+    <ol>
+      <li>Check that batteries are installed in the correct orientation.</li>
+      <li>Replace the batteries with a fresh set.</li>
+      <li>Move closer to the Luma, point the remote directly at the receiver, and clear any obstructions.</li>
+      <li>Restart the Luma and test the remote again.</li>
+      <li>Try the spare remote, if available.</li>
+      <li>As a temporary fix, connect a USB keyboard and mouse to control the unit. Use an additional monitor as a source if needed to identify.</li>
+    </ol>
+    <p class="label label-escalate">Contact Proto Support if</p>
+    <ul>
+      <li>Neither the original nor spare remote works</li>
+      <li>The remote receiver looks damaged or obstructed</li>
+      <li>The Luma can't be controlled even with a keyboard and mouse</li>
+      <li>You need help pairing or configuring a remote</li>
+    </ul>
+  </div></details>
+
+  <details class="card"><summary><span class="num">08</span><span class="q">My Luma won't boot / is stuck on startup</span><span class="chev">+</span></summary>
+  <div class="content">
+    <p class="label">Try these steps in order</p>
+    <ol>
+      <li>Confirm the unit is receiving power.</li>
+      <li>Note any error message on screen, or record LED/fan/display behavior if there isn't one.</li>
+      <li>Power off completely, disconnect power for at least 30 seconds, then reconnect and restart.</li>
+      <li>Check whether the boot menu can detect the SSD; attempt the approved recovery procedure if so.</li>
+      <li>If the SSD isn't detected, power off, open the approved access panel, and reseat the SSD.</li>
+      <li>If reseating doesn't help, install the approved pre-imaged spare SSD and restart.</li>
+    </ol>
+    <p class="label label-escalate">Contact Proto Support if</p>
+    <ul>
+      <li>The SSD isn't detected even after reseating</li>
+      <li>A replacement SSD doesn't restore operation</li>
+      <li>The unit shows repeated boot errors</li>
+      <li>Configuration or activation can't be restored</li>
+    </ul>
+  </div></details>
+
+  <details class="card"><summary><span class="num">09</span><span class="q">A USB peripheral isn't working</span><span class="chev">+</span></summary>
+  <div class="content">
+    <p class="label">Try these steps in order</p>
+    <ol>
+      <li>Confirm the peripheral is powered on, if it needs separate power.</li>
+      <li>Disconnect and reconnect the USB device.</li>
+      <li>Try a different USB port.</li>
+      <li>Restart the Luma with the peripheral unplugged, then reconnect it after startup.</li>
+      <li>Test the peripheral on another computer to rule out a bad cable or device.</li>
+      <li>Inspect the USB port for damage or looseness; reseat or replace as needed.</li>
+    </ol>
+    <p class="label label-escalate">Contact Proto Support if</p>
+    <ul>
+      <li>Multiple known-working peripherals fail</li>
+      <li>One or more USB ports look physically damaged</li>
+      <li>The device needs unsupported drivers or configuration changes</li>
+      <li>USB functionality keeps failing after restarts</li>
+    </ul>
+  </div></details>
+
+  </div>
+  <footer>Proto &mdash; Luma Support<br>&copy; 2026 Proto Inc. All rights reserved.</footer>
+</div>
+</body>
+</html>
